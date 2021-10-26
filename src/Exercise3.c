@@ -51,7 +51,24 @@ void Ex3(int in_arr[], int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(in_arr,a,n,n);
 	//Your codes here
-	
+	for(int i = 0; i < n; i++)
+		for(int t = i + 1; t < n; t++)
+		{
+			if(a[t][t] < a[i][i])
+			{
+				int temp = a[t][t];
+				a[t][t] = a[i][i];
+				a[i][i] =temp;
+			}
+			
+			if(a[t][n - 1 - t] < a[i][n - 1 - i])
+			{
+				int temp = a[t][n - 1 - t];
+				a[t][n - 1 - t] = a[i][n - 1 - i];
+				a[i][n - 1 - i] =temp;
+			}
+		}
+
 	printArray(a,n,n);
 }
 
