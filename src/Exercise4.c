@@ -49,12 +49,22 @@ void printArray(int a[SIZE][SIZE], int m, int n)
 
 void insertRow(int arr[], int a[SIZE][SIZE],int rowIndex, int m, int n){
 	//Your codes here
+	for(int row = m; row > rowIndex; row--)
+		for(int column = 0; column < n; column++)
+			a[row][column] = a[row - 1][column];
 	
+	for(int column = 0; column < n; column++)
+		a[rowIndex][column] = arr[column];
+		printArray(a, m - 1, n);
 }
 
 void removeRow(int a[SIZE][SIZE], int rowIndex, int m, int n){
 	//Your codes here
-	
+	for(int row = rowIndex; row < m - 1; row++)
+		for(int column = 0; column < n; column++)
+			a[row][column] = a[row + 1][column];
+
+	printArray(a, m - 1, n);
 }
 
 void insertCol(int arr[], int a[SIZE][SIZE],int colIndex, int m, int n){
@@ -64,7 +74,11 @@ void insertCol(int arr[], int a[SIZE][SIZE],int colIndex, int m, int n){
 
 void removeCol(int a[SIZE][SIZE], int colIndex, int m, int n){
 	//Your codes here
-	
+	for(int column = colIndex; column < n - 1; column++)
+		for(int row = 0; row < m; row++)
+			a[row][column] = a[row][column + 1];
+
+	printArray(a, m, n - 1);
 }
 
 int main(int argc, char *argv[]) {
