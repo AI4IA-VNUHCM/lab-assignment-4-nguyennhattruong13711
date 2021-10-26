@@ -53,6 +53,17 @@ void Ex2(int arr[], int m, int n){
 	int a[SIZE][SIZE];
 	Array2Dconverter(arr,a,m,n);
 	//Your codes here
+for(int column = 0; column < n; column++)
+		for(int row = 0; row < m; row++)
+			for(int t = row + 1; t < m; t++)
+				if((a[row][column] - a[t][column]) * ((column % 2 + 1) * 2 - 3) > 0)
+				{
+					int temp = a[row][column];
+					a[row][column] = a[t][column];
+					a[t][column] =temp;
+				}
+		
+			
 
 	printArray(a, m, n);
 }
